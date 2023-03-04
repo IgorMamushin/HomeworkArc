@@ -4,17 +4,14 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_USER_ID": "postgres",
+        "DB_PASSWORD": "password"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5001",
+      "launchUrl": "swagger",
       "hotReloadEnabled": false
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "publishAllPorts": true
     }
   }
 }
