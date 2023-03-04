@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "25eb463c-c22b-43f7-97a7-d28a938f32d7",
+		"name": "mamushin_homework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2869964"
+	},
+	"item": [
+		{
+			"name": "GetUserById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/user/get/c8b5ea0b-72fa-421c-af18-0058ac28b98e",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"get",
+						"c8b5ea0b-72fa-421c-af18-0058ac28b98e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Иван\",\r\n  \"lastName\": \"Иванов\",\r\n  \"age\": 30,\r\n  \"biography\": \"Чтение научной литературы\",\r\n  \"city\": \"Иркутск\",\r\n  \"password\": \"SomePassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"c8b5ea0b-72fa-421c-af18-0058ac28b98e\",\r\n  \"password\": \"SomePassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

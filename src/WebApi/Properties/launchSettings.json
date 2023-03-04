@@ -6,7 +6,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DB_USER_ID": "postgres",
-        "DB_PASSWORD": "password"
+        "DB_PASSWORD": "postgres"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5001",

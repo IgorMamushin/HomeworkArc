@@ -1,3 +1,4 @@
+using DataAccess;
 using WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,4 +9,5 @@ var app = builder.Build();
 
 startup.Configure(app, builder.Environment);
 
+MigrateRunner.MigrationRun();
 app.Run();

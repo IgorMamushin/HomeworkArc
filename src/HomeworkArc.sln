@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{A7D6E1B5-801A-4F06-B29F-63CCB664C0C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{856BF1A8-D1CC-4CB5-8D4E-8A7F36DE4D47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{856BF1A8-D1CC-4CB5-8D4E-8A7F36DE4D47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{0667E30B-482D-438C-8E0E-D58FA57B0214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{0667E30B-482D-438C-8E0E-D58FA57B0214}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{C8589D86-02A9-46ED-BA33-CFEAA03DB155}"
 EndProject
@@ -15,7 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{C767CF3F
 	ProjectSection(SolutionItems) = preProject
 		..\.dockerignore = ..\.dockerignore
 		..\.gitignore = ..\.gitignore
-		..\CreateDb.sql = ..\CreateDb.sql
 		..\docker-compose.yaml = ..\docker-compose.yaml
 		..\Dockerfile = ..\Dockerfile
 	EndProjectSection

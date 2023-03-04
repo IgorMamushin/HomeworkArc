@@ -1,41 +1,9 @@
 ﻿using DataAccess.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+using WebApi.HttpModels;
 
 namespace WebApi.Controllers
 {
-    public class GetUserResponse
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
-        public string Biography { get; set; }
-        public string City { get; set; }
-    }
-
-    public class RegisterUserRequest
-    {
-        [Required, MinLength(1), MaxLength(50)]
-        public string FirstName { get; set; }
-        [Required, MinLength(1), MaxLength(50)]
-        public string LastName { get; set; }
-        [Required]
-        public int Age { get; set; }
-        [MaxLength(1000)]
-        public string Biography { get; set; }
-        [Required, MinLength(1), MaxLength(30)]
-        public string City { get; set; }
-
-        [Required, MinLength(1)]
-        public string Password { get;set; }
-    }
-
-    public class RegisterUserResponse
-    {
-        public Guid Id { get; set; }
-    }
-
     [Route("user")]
     [ApiController]
     public class UserController : ControllerBase
@@ -46,7 +14,6 @@ namespace WebApi.Controllers
         {
             _repository = repository;
         }
-
 
         [HttpGet("get/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetUserResponse))]

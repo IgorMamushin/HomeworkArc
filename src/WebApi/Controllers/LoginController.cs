@@ -1,25 +1,10 @@
 ﻿using DataAccess.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+using WebApi.HttpModels;
 
 namespace WebApi.Controllers
 {
-    public class LoginRequest
-    {
-        [Required]
-        public Guid Id { get;set; }
-        
-        [Required]
-        public string Password { get;set; } = default!;
-    }
-
-    public class LoginResponse
-    {
-        public Guid Token { get;set; }
-    }
-
-    [Route("api/login")]
+    [Route("login")]
     [ApiController]
     public class LoginController : ControllerBase
     {
