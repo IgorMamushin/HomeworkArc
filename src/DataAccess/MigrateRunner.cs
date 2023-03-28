@@ -7,7 +7,7 @@ namespace DataAccess
     {
         public static void MigrationRun()
         {
-            using (var serviceProvider = CreateServices(ServiceCollectionExtension.GetConnectionString()))
+            using (var serviceProvider = CreateServices(ConnectionStringBuilder.GetRwConnectionString(9000)))
             using (var scope = serviceProvider.CreateScope())
             {
                 // Put the database update into a scope to ensure

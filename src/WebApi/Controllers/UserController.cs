@@ -1,5 +1,6 @@
 ﻿using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using WebApi.HttpModels;
 
 namespace WebApi.Controllers
@@ -55,6 +56,19 @@ namespace WebApi.Controllers
             return Ok(new RegisterUserResponse()
             {
                 Id = userId
+            });
+        }
+    
+        [HttpGet("search")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SearchResponse))]
+        public async Task<IActionResult> Search(
+            [FromQuery] [Required] [MinLength(1)] string lastName, 
+            [FromQuery] [Required] [MinLength(1)] string firstName)
+        {
+            var users = await _repository.Search(lastName, firstName, HttpContext.RequestAborted);
+            return Ok(new SearchResponse()
+            {
+                Users = users,
             });
         }
     }

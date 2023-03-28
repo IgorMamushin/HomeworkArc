@@ -7,6 +7,7 @@ namespace DataAccess.Migrations
     {
         public override void Down()
         {
+            Delete.Table("app_user");
         }
 
         public override void Up()
@@ -22,7 +23,6 @@ namespace DataAccess.Migrations
                 .WithColumn("biography").AsString(1000)
                 .WithColumn("city").AsString(30)
                 .WithColumn("password_hash").AsString(100);
-
         }
     }
 }
