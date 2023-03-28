@@ -10,8 +10,8 @@ services:
         ports:
           - "5005:5432"
     backend:
-        image: mamushin_hw_arc:v2
-        container_name: mamushin_service_v2
+        image: mamushin_hw_arc:v2.1
+        container_name: mamushin_service_v2.1
         build: .
         ports:
             - "5000:80"
