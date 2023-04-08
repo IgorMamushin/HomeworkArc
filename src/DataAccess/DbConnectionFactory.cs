@@ -8,5 +8,10 @@ namespace DataAccess
         {
             return new Npgsql.NpgsqlConnection(ConnectionStringBuilder.GetRwConnectionString());
         }
+
+        public IDbConnection CreateReadConnection()
+        {
+            return new Npgsql.NpgsqlConnection(ConnectionStringBuilder.GetReadConnectionString());
+        }
     }
 }

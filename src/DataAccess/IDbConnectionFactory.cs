@@ -5,5 +5,7 @@ namespace DataAccess
     public interface IDbConnectionFactory
     {
         IDbConnection CreateConnection();
+
+        IDbConnection CreateReadConnection();
     }
 }

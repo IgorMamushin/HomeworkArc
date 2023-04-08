@@ -30,7 +30,7 @@ services:
         volumes:
             - ./data/postgresql_async/:/var/lib/postgresql/data
     backend:
-        image: mamushin_hw_arc:v2.1
+        image: mamushin_hw_arc:v2.4
         container_name: mamushin_service
         build: .
         ports:
