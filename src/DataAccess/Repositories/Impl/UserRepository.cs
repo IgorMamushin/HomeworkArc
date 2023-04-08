@@ -55,7 +55,7 @@ t.first_name FirstName, t.last_name LastName, t.age, t.biography, t.city, t.pass
         {
             var command = new CommandDefinition(SelectByIdQuery, parameters: new { Id = id }, cancellationToken: cancellationToken);
 
-            using var connection = _dbConnectionFactory.CreateConnection();
+            using var connection = _dbConnectionFactory.CreateReadConnection();
             connection.Open();
 
             var user = await connection.QuerySingleOrDefaultAsync<User>(command);
@@ -66,7 +66,7 @@ t.first_name FirstName, t.last_name LastName, t.age, t.biography, t.city, t.pass
         {
             var command = new CommandDefinition(SearchQuery, parameters: new { ln = lastName + "%", fn = firstName + "%" }, cancellationToken: cancellationToken);
 
-            using var connection = _dbConnectionFactory.CreateConnection();
+            using var connection = _dbConnectionFactory.CreateReadConnection();
             connection.Open();
 
             var users = await connection.QueryAsync<UserDto>(command);

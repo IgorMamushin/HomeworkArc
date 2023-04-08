@@ -1,24 +1,50 @@
 version: '3.5'
 
 services:
-    postgres:
+    postgres_m:
         image: postgres:15-alpine
-        container_name: mamushin_db
+        container_name: mamushin_db_master
+        restart: always
         environment:
-          POSTGRES_USER: "postgres"
-          POSTGRES_PASSWORD: "postgres"
+            POSTGRES_USER: "postgres"
+            POSTGRES_PASSWORD: "postgres"
         ports:
-          - "5005:5432"
+            - "5005:5432"
+        networks:
+            - "app-network"
+        volumes:
+            - ./data/postgresql_master/:/var/lib/postgresql/data
+    postgres_a:
+        image: postgres:15-alpine
+        container_name: mamushin_db_async
+        restart: always
+        environment:
+            POSTGRES_USER: "postgres"
+            POSTGRES_PASSWORD: "postgres"
+        ports:
+            - "5006:5432"
+        networks:
+            - "app-network"
+        volumes:
+            - ./data/postgresql_async/:/var/lib/postgresql/data
     backend:
-        image: mamushin_hw_arc:v2.1
-        container_name: mamushin_service_v2.1
+        image: mamushin_hw_arc:v2.2
+        container_name: mamushin_service_v2.2
         build: .
         ports:
             - "5000:80"
         links:
-            - "postgres:database"
+            - "postgres_m:database_m"
+            - "postgres_a:database_a"
+        networks:
+            - "app-network"
         environment:
-            DB_HOST: "database"
+            DB_HOST: "database_m"
+            DB_ASYNC_HOST: "database_a"
             DB_PORT: "5432"
             ASPNETCORE_ENVIRONMENT: "Stg"
-            
+    
+
+networks:
+    app-network:
+        driver: bridge
