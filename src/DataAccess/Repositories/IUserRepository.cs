@@ -6,8 +6,8 @@ namespace DataAccess.Repositories
     {
         Task<Guid> CreateUser(User user, CancellationToken cancellationToken);
         Task<User?> GetUser(Guid id, CancellationToken cancellationToken);
-
-        Task<Guid?> Login(Guid id, string password, CancellationToken cancellationToken);
         Task<IReadOnlyList<UserDto>> Search(string lastName, string firstName, CancellationToken cancellationToken);
+
+        Task<bool> UserExist(Guid id, CancellationToken cancellationToken);
     }
 }

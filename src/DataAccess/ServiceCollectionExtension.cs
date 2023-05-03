@@ -2,7 +2,6 @@
 using DataAccess.Repositories.Impl;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Data;
 
 namespace DataAccess
 {
@@ -12,6 +11,8 @@ namespace DataAccess
         {
             services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<IFriendRepository, FriendRepository>();
             
             return services;
         }        

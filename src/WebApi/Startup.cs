@@ -1,4 +1,8 @@
 ﻿using DataAccess;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
+using WebApi.Auth;
 
 namespace WebApi
 {
@@ -15,7 +19,32 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(o =>
+            {
+                o.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter a valid token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer"
+                });
+                o.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+                            }
+                        },
+                        new string[]{}
+                    }
+                });
+            });
 
             services.AddCors(setupAction =>
             {
@@ -26,6 +55,15 @@ namespace WebApi
                     });
             });
 
+            services
+                .AddAuthentication(o =>
+                {
+                    o.DefaultAuthenticateScheme = "AuthScheme";
+                    o.DefaultChallengeScheme = "AuthScheme";
+                    o.DefaultSignInScheme = "AuthScheme";
+                })
+                .AddScheme<TokenAuthenticationSchemeOptions, AuthenticationSchemeHandler>("AuthScheme", o => {});
+
             services.AddRepositories(_configuration);
         }
 
@@ -35,6 +73,9 @@ namespace WebApi
             app.UseSwaggerUI();
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.MapDefaultControllerRoute();
         }
     }

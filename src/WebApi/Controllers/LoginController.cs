@@ -8,11 +8,11 @@ namespace WebApi.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
+        private readonly ILoginRepository _repository;
 
-        public LoginController(IUserRepository userRepository)
+        public LoginController(ILoginRepository repository)
         {
-            _userRepository = userRepository;
+            _repository = repository;
         }
 
         [HttpPost]
@@ -21,7 +21,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var token = await _userRepository.Login(request.Id, request.Password, HttpContext.RequestAborted);
+            var token = await _repository.Login(request.Id, request.Password, HttpContext.RequestAborted);
             if (!token.HasValue)
             {
                 return NotFound();
