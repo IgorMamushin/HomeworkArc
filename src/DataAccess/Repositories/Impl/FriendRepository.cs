@@ -29,7 +29,7 @@ namespace DataAccess.Repositories.Impl
 
             using var connection = _dbConnectionFactory.CreateConnection();
             connection.Open();
-            return await connection.ExecuteScalarAsync<bool>(command);
+            await connection.ExecuteScalarAsync<bool>(command);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace DataAccess
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<IFriendRepository, FriendRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
             
             return services;
         }        

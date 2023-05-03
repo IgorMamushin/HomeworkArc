@@ -32,11 +32,13 @@ namespace DataAccess.Migrations
                 .OnTable("friend")
                 .Columns("user_id", "friend_id");
 
-            Create.ForeignKey("FK_user_friend_user")
+            Create
+                .ForeignKey("FK_user_friend_user")
                 .FromTable("friend").ForeignColumn("user_id")
                 .ToTable("app_user").PrimaryColumn("id");
 
-            Create.ForeignKey("FK_user_friend_friend")
+            Create
+                .ForeignKey("FK_user_friend_friend")
                 .FromTable("friend").ForeignColumn("friend_id")
                 .ToTable("app_user").PrimaryColumn("id");
         }
