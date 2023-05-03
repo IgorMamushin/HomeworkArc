@@ -29,6 +29,21 @@ services:
             - "app-network"
         volumes:
             - ./data/postgresql_async/:/var/lib/postgresql/data
+    postgres_s:
+        image: postgres:15-alpine
+        container_name: mamushin_db_sync
+        restart: always
+        environment:
+            POSTGRES_USER: "postgres"
+            POSTGRES_PASSWORD: "postgres"
+        depends_on:
+            - postgres_m
+        ports:
+            - "5007:5432"
+        networks:
+            - "app-network"
+        volumes:
+            - ./data/postgresql_sync/:/var/lib/postgresql/data
     backend:
         image: mamushin_hw_arc:v2.4
         container_name: mamushin_service
